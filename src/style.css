@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply m-0 p-0;
+  @apply text-base;
+  @apply bg-slate-800;
+  @apply text-white;
+
+  &:has(.modal-container) {
+    @apply overflow-hidden;
+  }
+}
+
+h1 {
+  @apply text-4xl;
+  @apply font-bold;
+}
+
+#app {
+  @apply mx-auto;
+  @apply flex flex-col items-center justify-center gap-8;
+  @apply p-8;
+  @apply w-[520px];
+  @apply box-content;
+}
+
+.users-wrapper {
+  @apply flex flex-col gap-4;
+
+  &__header,
+  &__row {
+    @apply flex gap-4 items-center;
+
+    > div:nth-child(1) {
+      @apply w-[40px];
+    }
+    > div:nth-child(2) {
+      @apply w-[80px];
+    }
+  }
+
+  &__header {
+    @apply p-4;
+    @apply border-b border-sky-500;
+  }
+
+  &__row {
+    @apply px-4 py-2;
+
+    button {
+      @apply px-2 py-1;
+      @apply rounded-sm;
+      @apply text-sm;
+    }
+
+    &__btn-detail {
+      @apply bg-sky-500 hover:bg-sky-400 active:bg-sky-600;
+    }
+
+    &__btn-posts {
+      @apply bg-violet-500 hover:bg-violet-400 active:bg-violet-600;
+    }
+  }
+}
+
+.modal-container {
+  @apply fixed top-0 left-0 w-screen h-screen overflow-hidden;
+  @apply bg-black/70;
+
+  &__layer {
+    @apply flex justify-center;
+    @apply pt-24;
+    @apply w-full h-full overflow-y-auto;
+
+    &__main {
+      @apply w-fit h-fit;
+      @apply px-5 py-4;
+      @apply bg-slate-700;
+      @apply rounded-lg;
+      @apply box-content;
+    }
+  }
+}
+
+a {
+  @apply text-violet-300 hover:text-violet-200 active:text-violet-400 underline;
+}
