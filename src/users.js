@@ -83,8 +83,6 @@ export default function renderUsers(users) {
                         ]
                       ),
                     ])
-
-                    document.body.appendChild(modalWrapper)
                   },
                 },
                 ['상세 정보']
@@ -140,8 +138,6 @@ export default function renderUsers(users) {
                         ]
                       ),
                     ])
-
-                    document.body.appendChild(modalWrapper)
                   },
                 },
                 ['작성한 게시글']
