@@ -57,7 +57,16 @@ export default function renderUsers(users) {
                             },
                             [
                               createElement('div', { className: 'flex flex-col gap-4 w-[320px] h-fit' }, [
-                                createElement('div', { className: 'text-sm font-semibold italic' }, [user.id]),
+                                createElement(
+                                  'div',
+                                  {
+                                    className: 'text-sm font-semibold italic',
+                                    dataset: {
+                                      testId: `user__${user.id}`,
+                                    },
+                                  },
+                                  [user.id]
+                                ),
                                 createElement('div', { className: 'flex gap-8' }, [
                                   createElement('div', { className: 'font-semibold' }, ['이름']),
                                   createElement('div', {}, [user.name]),
@@ -109,6 +118,9 @@ export default function renderUsers(users) {
                             'div',
                             {
                               className: 'modal-container__layer__main',
+                              dataset: {
+                                testId: `user__${user.id}__posts`,
+                              },
                             },
                             [
                               createElement('div', { className: 'flex flex-col gap-8 w-[480px] h-fit' }, [
