@@ -43,55 +43,62 @@ export default function renderUsers(users) {
                     testId: `btn-detail__${index}`,
                   },
                   onclick() {
-                    const modalWrapper = createElement('div', { className: 'modal-container' }, [
-                      createElement(
-                        'div',
-                        {
-                          className: 'modal-container__layer',
+                    const modalWrapper = createElement(
+                      'div',
+                      {
+                        className: 'modal-container',
+                        dataset: {
+                          testId: `user__${user.id}`,
                         },
-                        [
-                          createElement(
-                            'div',
-                            {
-                              className: 'modal-container__layer__main',
-                            },
-                            [
-                              createElement('div', { className: 'flex flex-col gap-4 w-[320px] h-fit' }, [
-                                createElement(
-                                  'div',
-                                  {
-                                    className: 'text-sm font-semibold italic',
-                                    dataset: {
-                                      testId: `user__${user.id}`,
+                      },
+                      [
+                        createElement(
+                          'div',
+                          {
+                            className: 'modal-container__layer',
+                          },
+                          [
+                            createElement(
+                              'div',
+                              {
+                                className: 'modal-container__layer__main',
+                              },
+                              [
+                                createElement('div', { className: 'flex flex-col gap-4 w-[320px] h-fit' }, [
+                                  createElement(
+                                    'div',
+                                    {
+                                      className: 'text-sm font-semibold italic',
                                     },
-                                  },
-                                  [user.id]
-                                ),
-                                createElement('div', { className: 'flex gap-8' }, [
-                                  createElement('div', { className: 'font-semibold' }, ['이름']),
-                                  createElement('div', {}, [user.name]),
-                                ]),
-                                createElement('div', { className: 'flex gap-8' }, [
-                                  createElement('div', { className: 'font-semibold' }, ['성별']),
-                                  createElement('div', {}, [user.gender === 'M' ? '남성' : '여성']),
-                                ]),
-                                createElement('div', {}, []),
-                                createElement(
-                                  'button',
-                                  {
-                                    className: 'text-sm py-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 rounded-md',
-                                    onclick() {
-                                      modalWrapper.hide()
+                                    [user.id]
+                                  ),
+                                  createElement('div', { className: 'flex gap-8' }, [
+                                    createElement('div', { className: 'font-semibold' }, ['이름']),
+                                    createElement('div', {}, [user.name]),
+                                  ]),
+                                  createElement('div', { className: 'flex gap-8' }, [
+                                    createElement('div', { className: 'font-semibold' }, ['성별']),
+                                    createElement('div', {}, [user.gender === 'M' ? '남성' : '여성']),
+                                  ]),
+                                  createElement('div', {}, []),
+                                  createElement(
+                                    'button',
+                                    {
+                                      className:
+                                        'text-sm py-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 rounded-md',
+                                      onclick() {
+                                        modalWrapper.hide()
+                                      },
                                     },
-                                  },
-                                  ['닫기']
-                                ),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      ),
-                    ])
+                                    ['닫기']
+                                  ),
+                                ]),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]
+                    )
                   },
                 },
                 ['상세 정보']
@@ -107,49 +114,55 @@ export default function renderUsers(users) {
                   },
                   async onclick() {
                     const posts = await api.getPostsByUser(user.id)
-                    const modalWrapper = createElement('div', { className: 'modal-container' }, [
-                      createElement(
-                        'div',
-                        {
-                          className: 'modal-container__layer',
+                    const modalWrapper = createElement(
+                      'div',
+                      {
+                        className: 'modal-container',
+                        dataset: {
+                          testId: `user__${user.id}__posts`,
                         },
-                        [
-                          createElement(
-                            'div',
-                            {
-                              className: 'modal-container__layer__main',
-                              dataset: {
-                                testId: `user__${user.id}__posts`,
+                      },
+                      [
+                        createElement(
+                          'div',
+                          {
+                            className: 'modal-container__layer',
+                          },
+                          [
+                            createElement(
+                              'div',
+                              {
+                                className: 'modal-container__layer__main',
                               },
-                            },
-                            [
-                              createElement('div', { className: 'flex flex-col gap-8 w-[480px] h-fit' }, [
-                                createElement('div', { className: 'font-semibold' }, [
-                                  createElement('span', { className: 'italic' }, [user.name]),
-                                  `님이 작성한 게시글 목록`,
-                                ]),
-                                createElement(
-                                  'div',
-                                  { className: 'flex flex-col gap-4' },
-                                  posts.map(post => createElement('a', { href: '#' }, [post.title]))
-                                ),
-                                createElement(
-                                  'button',
-                                  {
-                                    className:
-                                      'text-sm py-2 bg-violet-500 hover:bg-violet-400 active:bg-violet-600 rounded-md',
-                                    onclick() {
-                                      modalWrapper.hide()
+                              [
+                                createElement('div', { className: 'flex flex-col gap-8 w-[480px] h-fit' }, [
+                                  createElement('div', { className: 'font-semibold' }, [
+                                    createElement('span', { className: 'italic' }, [user.name]),
+                                    `님이 작성한 게시글 목록`,
+                                  ]),
+                                  createElement(
+                                    'div',
+                                    { className: 'flex flex-col gap-4' },
+                                    posts.map(post => createElement('a', { href: '#' }, [post.title]))
+                                  ),
+                                  createElement(
+                                    'button',
+                                    {
+                                      className:
+                                        'text-sm py-2 bg-violet-500 hover:bg-violet-400 active:bg-violet-600 rounded-md',
+                                      onclick() {
+                                        modalWrapper.hide()
+                                      },
                                     },
-                                  },
-                                  ['닫기']
-                                ),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      ),
-                    ])
+                                    ['닫기']
+                                  ),
+                                ]),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]
+                    )
                   },
                 },
                 ['작성한 게시글']
