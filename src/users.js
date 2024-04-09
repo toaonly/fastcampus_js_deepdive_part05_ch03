@@ -87,7 +87,7 @@ export default function renderUsers(users) {
                                       className:
                                         'text-sm py-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 rounded-md',
                                       onclick() {
-                                        modalWrapper.hide()
+                                        modalWrapper.remove()
                                       },
                                     },
                                     ['닫기']
@@ -99,6 +99,8 @@ export default function renderUsers(users) {
                         ),
                       ]
                     )
+
+                    document.body.append(modalWrapper)
                   },
                 },
                 ['상세 정보']
@@ -151,7 +153,7 @@ export default function renderUsers(users) {
                                       className:
                                         'text-sm py-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 rounded-md',
                                       onclick() {
-                                        modalWrapper.hide()
+                                        modalWrapper.remove()
                                       },
                                     },
                                     ['닫기']
@@ -163,6 +165,8 @@ export default function renderUsers(users) {
                         ),
                       ]
                     )
+
+                    document.body.append(modalWrapper)
                   },
                 },
                 ['작성한 게시글']
