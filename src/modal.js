@@ -42,6 +42,4 @@ export default function createModal({ attrs, width, children }) {
   )
 
   document.body.append(modalWrapper)
-
-  return modalWrapper
 }
