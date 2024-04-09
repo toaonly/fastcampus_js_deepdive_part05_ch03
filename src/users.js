@@ -149,7 +149,7 @@ export default function renderUsers(users) {
                                     'button',
                                     {
                                       className:
-                                        'text-sm py-2 bg-violet-500 hover:bg-violet-400 active:bg-violet-600 rounded-md',
+                                        'text-sm py-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 rounded-md',
                                       onclick() {
                                         modalWrapper.hide()
                                       },
