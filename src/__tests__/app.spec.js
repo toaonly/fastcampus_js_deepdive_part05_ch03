@@ -21,7 +21,7 @@ describe('app 테스트', () => {
     app.append(renderUsers(await api.getUsers()))
   })
 
-  it('"상세 보기" 버튼을 클릭하면 modal 이 열리고 modal 에서 사용자의 상세 정보가 렌더링 된다', () => {
+  it('"상세 보기" 버튼을 클릭하면 modal 이 열리고 modal 에서 사용자의 상세 정보가 렌더링 된다. 그리고 modal 의 닫기 버튼을 누르면 modal 이 사라진다', () => {
     const btnDetail = document.querySelector('[data-test-id="btn-detail__0"]')
 
     btnDetail.click()
@@ -33,9 +33,15 @@ describe('app 테스트', () => {
     expect(modal.textContent.match(user.id)).toBeTruthy()
     expect(modal.textContent.match(user.name)).toBeTruthy()
     expect(modal.textContent.match(user.gender === 'M' ? '남성' : '여성')).toBeTruthy()
+
+    const btnClose = modal.querySelector('button')
+
+    btnClose.click()
+
+    expect(modal.parentElement).toBe(null)
   })
 
-  it('"작성한 게시글" 버튼을 클릭하면 modal 이 열리고 modal 에서 사용자가 작성한 게시글 목록이 렌더링 된다', async () => {
+  it('"작성한 게시글" 버튼을 클릭하면 modal 이 열리고 modal 에서 사용자가 작성한 게시글 목록이 렌더링 된다. 그리고 modal 의 닫기 버튼을 누르면 modal 이 사라진다', async () => {
     const btnPosts = document.querySelector('[data-test-id="btn-posts__0"]')
 
     await btnPosts.click()
@@ -50,5 +56,11 @@ describe('app 테스트', () => {
     posts.forEach(post => {
       expect(modal.textContent.match(post.title)).toBeTruthy()
     })
+
+    const btnClose = modal.querySelector('button')
+
+    btnClose.click()
+
+    expect(modal.parentElement).toBe(null)
   })
 })
